@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class GuessingGame {
     public static void main(String[] args) {
-        int answer = (int) Math.floor(Math.random()*50) + 1;
+        int answer = generateRandomNumberUpTo(50);
         Scanner myScanner = new Scanner(System.in);
         while (true) {
             System.out.println("Please make a guess: ");
@@ -18,5 +18,8 @@ public class GuessingGame {
                 }
             }
         }
+    }
+    public static int generateRandomNumberUpTo(int range){
+        return (int) Math.floor(Math.random()*range) + 1;
     }
 }
