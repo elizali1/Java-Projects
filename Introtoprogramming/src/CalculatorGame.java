@@ -4,36 +4,51 @@ import java.util.Scanner;
 public class CalculatorGame {
     public static void main(String[] args) {
         Player newPlayer = createPlayer();
+        while (newPlayer!= null) {
         Scanner quizSelector = new Scanner(System.in);
-        System.out.println("Would you like to take the: \n A. Addition Quiz \n B. Modulo Quiz \n C. Subtraction Quiz \n D. True or False Quiz");
+        System.out.println("Would you like to take the: \n A. Addition Quiz \n B. Modulo Quiz \n C. Subtraction Quiz \n D. True or False Quiz \n or EXIT");
         String userSelection = quizSelector.nextLine().toLowerCase();
-        int myScore = 0;
-        int myModScore = 0;
-        int mySubScore = 0;
-        int myTrueScore = 0;
-        {
-            if (userSelection.equals("a")) {
-                myScore = addQuiz(5);
-                Boolean question = addQuestion((int) (Math.floor(Math.random() * 100) + 1), (int) (Math.floor(Math.random() * 100) + 1));
-                System.out.println(newPlayer.name() + " scored: " + myScore + " out of 5 on the Addition Quiz.");
-            }
-            if (userSelection.equals("b")) {
-                myModScore = moduloQuiz(5);
-                Boolean moduloQuestion = moduloQuestion((int) (Math.floor(Math.random() * 100) + 1), (int) (Math.floor(Math.random() * 100) + 1));
-                System.out.println(newPlayer.name() + " scored: " + myModScore + " out of 5 on the Modulo Quiz.");
-            }
-            if (userSelection.equals("c")) {
-                mySubScore = subtractionQuiz(5);
-                Boolean subtractionQuestion = subtractionQuestion((int) (Math.floor(Math.random() * 100) + 1), (int) (Math.floor(Math.random() * 100) + 1));
-                System.out.println(newPlayer.name() + " scored: " + mySubScore + " out of 5 on the Subtraction Quiz.");
-            }
-            if (userSelection.equals("d")) {
-                myTrueScore = trueQuiz(5);
-                Boolean subtractionQuestion = trueQuestion((int) (Math.floor(Math.random() * 100) + 1), (int) (Math.floor(Math.random() * 100) + 1));
-                System.out.println(newPlayer.name() + " scored: " + myTrueScore + " out of 5 on the True or False Quiz.");
-            }
-            else {
-                System.out.println("Please choose between: A, B, C or D.");
+            int[] highScore = new int[5];
+            int count = 1;
+            int myScore = 0;
+            int myModScore = 0;
+            int mySubScore = 0;
+            int myTrueScore = 0;
+            {
+                if (userSelection.equals("a")) {
+                    HighScores(highScore);
+                    myScore = addQuiz(5);
+                    highScore[count - 1] = myScore;
+                    count++;
+                    Boolean question = addQuestion((int) (Math.floor(Math.random() * 100) + 1), (int) (Math.floor(Math.random() * 100) + 1));
+                    System.out.println(newPlayer.name() + " scored: " + myScore + " out of 5 on the Addition Quiz.");
+                }
+                if (userSelection.equals("b")) {
+                    HighScores(highScore);
+                    myModScore = moduloQuiz(5);
+                    highScore[count - 1] = myModScore;
+                    count++;
+                    Boolean moduloQuestion = moduloQuestion((int) (Math.floor(Math.random() * 100) + 1), (int) (Math.floor(Math.random() * 100) + 1));
+                    System.out.println(newPlayer.name() + " scored: " + myModScore + " out of 5 on the Modulo Quiz.");
+                }
+                if (userSelection.equals("c")) {
+                    HighScores(highScore);
+                    mySubScore = subtractionQuiz(5);
+                    highScore[count - 1] = mySubScore;
+                    count++;
+                    Boolean subtractionQuestion = subtractionQuestion((int) (Math.floor(Math.random() * 100) + 1), (int) (Math.floor(Math.random() * 100) + 1));
+                    System.out.println(newPlayer.name() + " scored: " + mySubScore + " out of 5 on the Subtraction Quiz.");
+                }
+                if (userSelection.equals("d")) {
+                    HighScores(highScore);
+                    myTrueScore = trueQuiz(5);
+                    highScore[count - 1] = myTrueScore;
+                    count++;
+                    Boolean subtractionQuestion = trueQuestion((int) (Math.floor(Math.random() * 100) + 1), (int) (Math.floor(Math.random() * 100) + 1));
+                    System.out.println(newPlayer.name() + " scored: " + myTrueScore + " out of 5 on the True or False Quiz.");
+                }
+            } if (userSelection.equals("exit")) {
+                break;
             }
         }
     }
@@ -80,7 +95,7 @@ public class CalculatorGame {
     public static int moduloQuiz(int length) {
         int myScore = 0;
         for (int i = 1; i < length; i++) {
-            if (moduloQuestion((int) (Math.floor(Math.random() * 100) + 1), (int) (Math.floor(Math.random() * 100) + 1)) == true) {
+            if (moduloQuestion((int) (Math.floor(Math.random() * 100) + 1), (int) (Math.floor(Math.random() * 100) + 1))) {
                 myScore++;
             }
         }
@@ -100,7 +115,7 @@ public class CalculatorGame {
     public static int subtractionQuiz(int length) {
         int myScore = 0;
         for (int i = 1; i < length; i++) {
-            if (subtractionQuestion((int) (Math.floor(Math.random() * 100) + 1), (int) (Math.floor(Math.random() * 100) + 1)) == true) {
+            if (subtractionQuestion((int) (Math.floor(Math.random() * 100) + 1), (int) (Math.floor(Math.random() * 100) + 1))) {
                 myScore++;
             }
         }
@@ -120,13 +135,28 @@ public class CalculatorGame {
     public static int trueQuiz(int length) {
         int myScore = 0;
             for (int i = 1; i < length; i++) {
-                if (trueQuestion((int) (Math.floor(Math.random() * 100) + 1), (int) (Math.floor(Math.random() * 100) + 1)) == true) {
+                if (trueQuestion((int) (Math.floor(Math.random() * 100) + 1), (int) (Math.floor(Math.random() * 100) + 1))) {
                     myScore++;
                 }
             }
             return myScore;
         }
+    public static void HighScores(int[] arr){
+        int max = arr[0];
+        for(int i = 1; i < arr.length; ++i){
+            if(arr[i] > max)
+                max = arr[i];
+        }
+        System.out.println("The score to beat is: " + max);
     }
+
+    public static void displayArray(int[] arr){
+        for(int num: arr){
+            System.out.println(num);
+        }
+    }
+
+}
 record Player(String name, int age) {}
 record HighScore(String player, int score) {}
 
