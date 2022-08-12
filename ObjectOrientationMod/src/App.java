@@ -31,6 +31,3 @@ public class App {
 }
 
 //Create a new method in your App class that takes a reference to a Product and a desired value. The method should alter the price of an item such that its value matches the desired value passed to the method.
-
-
-
