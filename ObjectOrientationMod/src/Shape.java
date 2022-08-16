@@ -1,6 +1,8 @@
 package src;
 
-public class Shape {
+import java.awt.*;
+
+abstract public class Shape implements Drawable{
     private int x;
     private int y;
     private String color;
@@ -45,5 +47,10 @@ public class Shape {
     }
     public String toString(){
         return "X Coordinate: "+x +" Y Coordinate: " + y+ " Color: "+color +" Circumference: "+getCircumference()+ " Area: "+getArea();
+    }
+
+    @Override
+    public void draw(Graphics x) {
+
     }
 }

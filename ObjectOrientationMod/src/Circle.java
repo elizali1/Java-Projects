@@ -1,6 +1,8 @@
 package src;
 
-public class Circle extends Shape{
+import java.awt.*;
+
+public class Circle extends Shape implements Drawable{
     private double radius;
 
     public double getRadius() {
@@ -10,9 +12,9 @@ public class Circle extends Shape{
     public void setRadius(double radius) {
         this.radius = radius;
     }
-    public Circle(int x, int y, double radius) {
+    public Circle(int x, int y) {
         super(x,y);
-        this.radius=radius;
+//        this.radius=radius;
     }
     public double getCircumference(){
         double circumference = (3.14 *(radius*2));
@@ -27,4 +29,8 @@ public class Circle extends Shape{
         int y = getY();
         return "X Coordinate: "+ x +" Y Coordinate: " + y +" Radius: " + radius +" Circumference: "+ getCircumference()+" Area: "+getArea();
     }
+    public void draw(Graphics x){
+        super.draw(x);
+        x.drawOval(getX(),getY(),getX(),getY());
+    };
 }
