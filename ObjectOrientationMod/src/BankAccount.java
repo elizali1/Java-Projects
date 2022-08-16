@@ -1,6 +1,8 @@
 package src;
 
-public class BankAccount {
+import java.awt.*;
+
+public class BankAccount implements Drawable{
     private double balance;
     private int accountNumber;
 
@@ -25,5 +27,10 @@ public class BankAccount {
     }
     public String toString(){
         return "Bank Account: " + accountNumber+ "has a balance of: "+balance;
+    }
+
+    @Override
+    public void draw(Graphics x) {
+        x.drawString("Money", 100,100);
     }
 }
