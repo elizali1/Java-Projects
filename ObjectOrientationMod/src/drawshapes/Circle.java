@@ -1,20 +1,18 @@
-package src;
+package src.drawshapes;
 
 import java.awt.*;
 
-public class Circle extends Shape implements Drawable{
+public class Circle extends Shape implements Drawable {
     private double radius;
-
     public double getRadius() {
         return radius;
     }
-
     public void setRadius(double radius) {
         this.radius = radius;
     }
-    public Circle(int x, int y) {
+    public Circle(int x, int y, double radius) {
         super(x,y);
-//        this.radius=radius;
+        this.radius=radius;
     }
     public double getCircumference(){
         double circumference = (3.14 *(radius*2));
@@ -29,8 +27,10 @@ public class Circle extends Shape implements Drawable{
         int y = getY();
         return "X Coordinate: "+ x +" Y Coordinate: " + y +" Radius: " + radius +" Circumference: "+ getCircumference()+" Area: "+getArea();
     }
-    public void draw(Graphics x){
-        super.draw(x);
-        x.drawOval(getX(),getY(),getX(),getY());
+    public void draw(Graphics g){
+        super.draw(g);
+        g.setColor(Color.yellow);
+        g.fillOval(getX(),getY(), (int) radius, (int) radius);
+        g.drawOval(getX(),getY(), (int) radius, (int) radius);
     };
 }

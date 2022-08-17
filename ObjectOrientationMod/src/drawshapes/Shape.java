@@ -1,8 +1,10 @@
-package src;
+package src.drawshapes;
+
+import src.drawshapes.Drawable;
 
 import java.awt.*;
 
-abstract public class Shape implements Drawable{
+abstract public class Shape implements Drawable {
     private int x;
     private int y;
     private String color;
@@ -50,7 +52,7 @@ abstract public class Shape implements Drawable{
     }
 
     @Override
-    public void draw(Graphics x) {
+    public void draw(Graphics g) {
 
     }
 }

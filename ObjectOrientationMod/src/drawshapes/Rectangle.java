@@ -1,8 +1,8 @@
-package src;
+package src.drawshapes;
 
 import java.awt.*;
 
-public class Rectangle extends Shape implements Drawable{
+public class Rectangle extends Shape implements Drawable {
     private int width;
     private int height;
 
@@ -37,8 +37,10 @@ public class Rectangle extends Shape implements Drawable{
         int y = getY();
         return "X Coordinate: "+ x +" Y Coordinate: " + y +" Width: " + width +" Height: "+height +" Circumference: "+getCircumference()+" Area: "+getArea();
     }
-    public void draw(Graphics x){
-        super.draw(x);
-        x.drawRect(getX(),getY(),getWidth(),getHeight());
+    public void draw(Graphics g){
+        super.draw(g);
+        g.setColor(Color.pink);
+        g.fillRect(getX(),getY(),getWidth(),getHeight());
+        g.drawRect(getX(),getY(),getWidth(),getHeight());
     };
 }

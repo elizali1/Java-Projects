@@ -1,7 +1,7 @@
-package src;
+package src.drawshapes;
 
 import java.awt.*;
 
 public interface Drawable {
-    void draw(Graphics x);
+    void draw(Graphics g);
 }
