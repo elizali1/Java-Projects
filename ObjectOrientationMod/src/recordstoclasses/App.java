@@ -1,4 +1,6 @@
-package src;
+package src.recordstoclasses;
+
+import src.recordstoclasses.Product;
 
 import java.util.Scanner;
 

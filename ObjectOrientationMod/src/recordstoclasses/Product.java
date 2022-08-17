@@ -1,4 +1,4 @@
-package src;
+package src.recordstoclasses;
 
 public class Product {
     private String name;

@@ -1,8 +1,4 @@
-package src;
-
-import java.sql.SQLOutput;
-
-import static org.junit.jupiter.api.Assertions.*;
+package src.objectsandclasses;
 
 class TradeTest {
     public static void main(String[] args){

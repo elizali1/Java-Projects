@@ -1,4 +1,4 @@
-package src;
+package src.objectsandclasses;
 
 public class Trader {
     private String name;
