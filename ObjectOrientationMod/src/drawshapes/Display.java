@@ -22,6 +22,10 @@ public class Display {
         myList.add(myRect);
         myList.add(myCircle);
         myList.add(myBank);
+        //manually draw/call each shape--also works
+//        myCircle.draw(g);
+//        myRect.draw(g);
+//        myBank.draw(g);
         for (Drawable s : myList){
             s.draw(g);
         };
